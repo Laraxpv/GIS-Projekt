@@ -1,3 +1,15 @@
+body {
+    background-image: url("background\ plant.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  h1 { font-size: 25px; }
+  p { font-size: 25px; }
+  body { font-size: 100%; }
+
+
 /* Style the tab */
 .tab {
     overflow: hidden;
@@ -18,7 +30,7 @@
   
   /* Change background color of buttons on hover */
   .tab button:hover {
-    background-color: rgb(228, 241, 220);
+    background-color: rgb(90, 133, 64);
   }
   
   /* Create an active/current tablink class */
@@ -48,13 +60,13 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 24px;
   }
   
   /* Change the color of links on hover */
   .topnav a:hover {
     background-color: rgb(149, 224, 149);
-    color: black;
+    color: whitesmoke;
   }
   
   /* Style the "active" element to highlight the current page */
