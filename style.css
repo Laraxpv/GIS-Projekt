@@ -10,7 +10,8 @@ body {
   body { font-size: 100%; 
          color:beige}
 
-
+         let allPAndBlue = document.querySelectorAll('p.blue');      
+         
 
 /* Style the tab */
 .tab {
@@ -101,3 +102,4 @@ body {
       border: 1px solid rgb(125, 239, 138);
     }
   }
+ a{text-decoration: none;color:rgb(149, 224, 149)}
