@@ -7,21 +7,24 @@ p.className="tablinks";
 let body = document.body;
 body.appendChild(p);
 
-
-function submit(){let add = document.getElementById("hinzufügen"); 
-
-let name = document.getElementById("name").value;
-
-let klima = document.getElementById("klima").value;
-
-let giesseinheit = document.getElementById("giesseinheit").value;
-
-const diePflanze = {name:name , klima:klima , giesseinheit:giesseinheit}
-
-} 
-
-let submitbutton = document.getElementById("submitbutton");
-
-submitbutton.addEventListener("click", submit);
-
 let pflanzenliste = []; 
+
+
+// const counter = document.getElementById('counter');
+// const plusOne = document.getElementById('plusOne');
+// const reset = document.getElementById('reset');
+
+// let value = Number(localStorage.getItem('value'));
+// counter.textContent = value;
+// plusOne.addEventListener('click', () => {
+//   setValue(value + 1);
+// });
+// reset.addEventListener('click', () => {
+//   setValue(0);
+// });
+
+function setValue(x) {
+  value = x;
+  counter.textContent = value;
+  localStorage.setItem('Kaktus', pflanze);
+}

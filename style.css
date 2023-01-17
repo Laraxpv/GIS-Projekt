@@ -103,3 +103,7 @@ body {
     }
   }
  a{text-decoration: none;color:rgb(149, 224, 149)}
+
+ table, th, td {
+  border: 1px solid;
+}
