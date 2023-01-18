@@ -1,3 +1,4 @@
+const click=0; // Click ist nicht defind, erst wenn was angeklickt wird, wird es auf true gesetzt
 let p = document.createElement('a'); // neues a Element
 p.textContent = 'By Lara';
 p.href="Pflanzendetail.html";
@@ -28,3 +29,34 @@ function setValue(x) {
   counter.textContent = value;
   localStorage.setItem('Kaktus', pflanze);
 }
+
+
+// Ein Eventlistener auf den Hyperlink, Request wird an Server geschickt wo alle Pflanzen als Array zurückgegeben werden
+
+async function load() {
+  try 
+  {
+    let response = await fetch(`http://127.0.0.1:3000/allePflanzen`);  //Request
+    if (response.ok) {
+      let pflanzen = await response.json();
+      for (let i = 0; i < pflanzen.length; i++) {  // For Schleife läuft durch Tr-Element durch und appendet Name, Klima, Giesseinheit
+        let plant = pflanzen[i];
+        const tabelle = createElement("tr");
+        const td = createElement("td");
+        tabelle.appendChild(td);
+        td.innerText = plant.name;
+        tabelle.appendChild(td);
+        td.innerText = plant.klima;
+        tabelle.appendChild(td);
+        td.innerText = plant.giesseinheit;
+      }
+          return pflanzen;
+          } else {
+          console.log("Error: ", response.statusText);
+          }
+  } catch (err) 
+          {
+          console.error(err);
+          }
+}
+document.getElementById("load").addEventListener(click, load);

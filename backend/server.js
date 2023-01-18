@@ -4,7 +4,7 @@ const mongodb = require('mongodb');
 const hostname = '127.0.0.1'; // localhost
 const port = 3000;
 
-const url = 'mongodb://localhost:27017'; // für lokale MongoDB
+const url = 'mongodb://127.0.0.1:27017'; // für lokale MongoDB
 const mongoClient = new mongodb.MongoClient(url);
 
 const defaultPlants = [{
@@ -53,13 +53,15 @@ const server = http.createServer(async (request, response) => {
         //console.log("getItems", items)
         response.write(JSON.stringify(items));
         break;
-    case '/getItem':
-        if(id){
-            let items = await itemCollection.find({
-                _id: new mongodb.ObjectId(id), // von Zahl zu MongoDB ID Objekt konvertieren
-            }).toArray();
-            //console.log("getItem", items[0]);
-            response.write(JSON.stringify(items[0]));
+    
+
+        // Die komplette Pflanzencollection wird als Array zurückgegeben 
+
+        case '/allePflanzen':
+        if(request.method === 'GET') {
+            let pflanzenCollection = mongoClient.db('Pflanzenapp').collection('angelegtePflanzen');
+            let pflanzen = await pflanzenCollection.find({}).toArray();
+            response.write(JSON.stringify(pflanzen));
         }
         break;
 
