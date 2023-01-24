@@ -49,7 +49,7 @@ async function startServer() {
     // optional: defaultItems einfügen, wenn Collection noch nicht existiert
     let collections = await mongoClient.db('Pflanzenapp').listCollections().toArray();
     if(!collections.find(collection => collection.name == 'angelegtePflanzen')){
-        mongoClient.db('Pflanzenapp').collection('angelegtePflnzen').insertMany(defaultPlants);
+        mongoClient.db('Pflanzenapp').collection('angelegtePflanzen').insertMany(defaultPlants);
     }
     // listen for requests
     server.listen(port, hostname, () => {
@@ -65,28 +65,30 @@ const server = http.createServer(async (request, response) => {
   response.setHeader('Access-Control-Allow-Origin', '*'); // bei CORS Fehler
   const url = new URL(request.url || '', `http://${request.headers.host}`);
   const id = url.searchParams.get('id');
-  const itemCollection = mongoClient.db('freezer').collection('item');
+  const itemCollection = mongoClient.db('Pflanzenapp').collection('angelegtePflanzen');
   switch (url.pathname) {
     case '/getItems':
         let items = await itemCollection.find({}).toArray();
-        //console.log("getItems", items)
         response.write(JSON.stringify(items));
         break;
     
 
-        // Die komplette Pflanzencollection wird als Array zurückgegeben 
+    // Die komplette Pflanzencollection wird als Array zurückgegeben 
 
-        case '/allePflanzen':
+    case '/allePflanzen':
+        console.log("/allePflanzen");
         if(request.method === 'GET') {
             let pflanzenCollection = mongoClient.db('Pflanzenapp').collection('angelegtePflanzen');
             let pflanzen = await pflanzenCollection.find({}).toArray();
             response.write(JSON.stringify(pflanzen));
+            console.log(JSON.stringify(pflanzen));
         }
         break;
 
-        // Eintrag wird angelegt durch setItem
+    // Eintrag wird angelegt durch setItem
         
     case '/setItem':
+        console.log("/allePflanzen");
         if(request.method === 'POST') {
             let jsonString = '';
             request.on('data', (data) => {
@@ -94,6 +96,7 @@ const server = http.createServer(async (request, response) => {
             });
             request.on('end', () => {
                 newItem = JSON.parse(jsonString);
+                console.log("data: ", jsonString)
                 if(newItem._id){ // update
                     //console.log("update", newItem);
                     newItem._id = mongodb.ObjectId(newItem._id); // von Zahl zu MongoDB ID Objekt konvertieren
