@@ -1,7 +1,7 @@
 const defaultPlants = [{
     id: 1,
    Name: "Kaktus",
-   Klima: "Sahara ",
+   Klima: "Sahara ",                         
     imageSrc: "images/Kaktus.jpg",
 },
 {
@@ -15,7 +15,12 @@ const defaultPlants = [{
     Klima: "Sahara",
 },]
 
-const itemsAsJson = localStorage.getItem("Pflanzen") || JSON.stringify(defaultPlants);
+
+     // Informationen speichern, so dass sie beim neu laden der Seite noch da sind. permanente Speicherung (kein Verfallsdatum)
+     //bleibt erhalten bei Reload der Seite, oder Schließen des Browsers/Tabs
+     //kann vom User gelöscht werden 
+
+const itemsAsJson = localStorage.getItem("Pflanzen") || JSON.stringify(defaultPlants);  
 let items = JSON.parse(itemsAsJson);
 
 function updateLocalStorage(){
@@ -34,9 +39,13 @@ function addItem(newItem){
     updateLocalStorage();
 }
 
+// getItem(key) value für den angegebenen key abrufen
+
 function getItem(id){
     return items.find(item => item.id == id);
 }
+
+//removeItem(key) Eintrag mit dem angegebenen key löschen
 
 function removeItem(id){
     items = items.filter(item => item.id != id);

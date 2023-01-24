@@ -24,6 +24,25 @@ const defaultPlants = [{
     Klima: "Sahara",
 },]
 
+
+//Fetch API
+//wird von den meisten Browsern unterstützt
+//fetch Methode: fetch(RequestInfo, RequestInit)
+//RequestInfo : URL als String, oder Request Objekt
+//RequestInit : optional; weitere Request Informationen wie method, header, body
+//Bsp: fetch(URL, {method: 'post', body: '{"plz":78120}'})
+//gibt ein Promise Objekt zurück, um auf Ergebnis zu warten und als Ergebnis ein Response Objekt
+
+
+
+// ASYNC
+//await vor einem Promise Objekt lässt den Code stoppen, bis die Promise fulfilled ist
+//await kann nur in einer async function verwendet werden (nur diese stoppt; führt
+//zwischenzeitlich anderen Code aus)
+//async function gibt immer ein Promise Objekt zurück (um auf ihr Ende + ggf.
+//Rückgabewert warten zu können)
+//Alternative zu then Methode von Promise ; leichter lesbar / verständlicher
+
 async function startServer() {
     // connect to database
     await mongoClient.connect();

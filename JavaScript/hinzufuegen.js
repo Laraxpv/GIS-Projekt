@@ -1,4 +1,4 @@
-/* function submit(){let add = document.getElementById("hinzufuegen"); 
+function submit(){let add = document.getElementById("hinzufuegen"); 
 
 let name = document.getElementById("name").value;
 
@@ -11,12 +11,17 @@ console.log(Pflanze);
 
 addItem(Pflanze);
  
-//localStorage.setItem('Pflanzen', JSON.stringify(Pflanze));
-} //
+localStorage.setItem('Pflanzen', JSON.stringify(Pflanze)); 
 
-*/
 
-async function submit() {
+JSON.stringify(objectRef) // Objekt in String wandeln
+JSON.parse(jsonString) //String in Objekt wandeln
+
+} 
+
+
+
+/*async function submit() {
 
     let name = document.getElementById("name").value;
 
@@ -35,7 +40,7 @@ async function submit() {
           headers: {
             "Content-Type": "text/plain"
           },
-          body: JSON.stringify(Pflanze)
+          body: JSON.stringify(Pflanze)   // Objekt in String wandeln
         });
         if (response.ok) {
           console.log("Event saved to the database");
@@ -45,7 +50,7 @@ async function submit() {
       } catch (err) {
         console.error(err);
       }
-    }
+    } */
     
 
 let submitbutton = document.getElementById("submitbutton");

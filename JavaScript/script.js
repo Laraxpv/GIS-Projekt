@@ -1,7 +1,7 @@
 const click=0; // Click ist nicht defind, erst wenn was angeklickt wird, wird es auf true gesetzt
 let p = document.createElement('a'); // neues a Element
-p.textContent = 'By Lara';
-p.href="Pflanzendetail.html";
+p.textContent = 'By Lara'; // wird auf meiner Seite angezeigt
+p.href="Pflanzendetail.html"; // Link auf externe Seite
 p.className="tablinks";
 
 
